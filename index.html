@@ -17,5 +17,14 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Inline error catcher — runs before any module, survives JS crashes -->
+    <script>
+      window.__fatalErr = function(msg) {
+        var r = document.getElementById('root');
+        if (r) { r.style.cssText='padding:40px;font:13px monospace;background:#fff;color:#c00;min-height:100vh;white-space:pre-wrap'; r.innerHTML='<h2>Fatal Error</h2>'+msg; }
+      };
+      window.addEventListener('error', function(e){ window.__fatalErr((e.error&&e.error.stack)||e.message); });
+      window.addEventListener('unhandledrejection', function(e){ window.__fatalErr(String((e.reason&&e.reason.stack)||e.reason)); });
+    </script>
   </body>
 </html>
