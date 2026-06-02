@@ -1,0 +1,8 @@
+{
+  "name": "selena-fortea-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && cp -r index.html 404.html favicon.svg icons.svg assets _redirects dist/"
+  }
+}
